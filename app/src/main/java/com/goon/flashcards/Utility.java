@@ -1,6 +1,7 @@
 package com.goon.flashcards;
 
 import static com.goon.flashcards.Logger.elogger;
+import static com.goon.flashcards.Utility.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -17,6 +18,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 /**
  * This class contains utility functions used across the application.
  */
@@ -28,6 +33,14 @@ public class Utility
     // Return codes.
     public final static int SUCCESS = 0;
     public final static int FAILURE = -1;
+
+    public enum LayoutManagerType {
+        GRID_LAYOUT_MANAGER,
+        LINEAR_LAYOUT_MANAGER
+    }
+
+    public static final String KEY_LAYOUT_MANAGER = "layoutManager";
+    public static final int SPAN_COUNT = 2;
 
 
     public Utility()
@@ -320,6 +333,47 @@ public class Utility
             }
         });
 
+    }
+
+    /**
+     * Set RecyclerView's LayoutManager to the one given.
+     *
+     * @param layoutManagerType Type of layout manager to switch to.
+     */
+    public static void setRecyclerViewLayoutManager(Utility.LayoutManagerType layoutManagerType,
+                                                    RecyclerView custom_preset_recyclerview,
+                                                    RecyclerView.LayoutManager mLayoutManager,
+                                                    Utility.LayoutManagerType mCurrentLayoutManagerType,
+                                                    Activity activity)
+    {
+        int scrollPosition = 0;
+
+        // If a layout manager has already been set, get current scroll position.
+        if (custom_preset_recyclerview.getLayoutManager() != null) {
+            scrollPosition = ((LinearLayoutManager) custom_preset_recyclerview.getLayoutManager())
+                    .findFirstCompletelyVisibleItemPosition();
+        }
+
+        layoutManagerType = LINEAR_LAYOUT_MANAGER;
+
+        switch (layoutManagerType) {
+            case GRID_LAYOUT_MANAGER:
+                mLayoutManager = new GridLayoutManager(activity, SPAN_COUNT);
+                mCurrentLayoutManagerType = LayoutManagerType.GRID_LAYOUT_MANAGER;
+                break;
+            case LINEAR_LAYOUT_MANAGER:
+                mLayoutManager = new LinearLayoutManager(activity);
+                mCurrentLayoutManagerType = LINEAR_LAYOUT_MANAGER;
+                break;
+            default:
+                mLayoutManager = new LinearLayoutManager(activity);
+                mCurrentLayoutManagerType = LINEAR_LAYOUT_MANAGER;
+        }
+
+        custom_preset_recyclerview.setLayoutManager(mLayoutManager);
+        custom_preset_recyclerview.scrollToPosition(scrollPosition);
+
+        return;
     }
 
 }

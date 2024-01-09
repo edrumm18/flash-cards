@@ -2,5 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="card_back_primary">#69CAD6</color>
+
+<!--  For the flash card deck list.  -->
+    <color name="recycler_card_selected">#85CCE6</color>
+    <color name="colorSecondaryDark">#2E7697</color>
+    <color name="scrollbar_base">#D1D1D1</color>
 </resources>

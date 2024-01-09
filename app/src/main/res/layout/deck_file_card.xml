@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This is the layout for individual items that will populate in the preset file lists in SpecA. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:background="@drawable/blk_border_wht_back">
+
+    <!--   Stack file title and its contained settings.    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <!--   Will have title of preset file.    -->
+        <TextView
+            android:id="@+id/deck_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:paddingBottom="5dp"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:textStyle="bold"
+            />
+
+        <!--    Container for number of cards, title and number.   -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/card_quantity_label"
+                android:textColor="@color/black"
+                android:paddingVertical="2dp"
+                android:layout_weight="2"
+                />
+
+            <TextView
+                android:id="@+id/num_cards_str"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=""
+                android:textColor="@color/black"
+                android:paddingVertical="2dp"
+                android:layout_weight="1"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

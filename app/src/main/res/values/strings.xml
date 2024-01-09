@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Flash Cards</string>
+
+<!--  Main Activity  -->
+    <!--  TextViews  -->
+    <string name="main_instructions">Select a flash card deck.</string>
+    <string name="label_or">OR</string>
+
+    <!--  Deck List  -->
+    <string name="card_quantity_label">Number of Cards: </string>
+
+    <!--  Buttons  -->
+    <string name="button_launch_deck">Launch</string>
+    <string name="button_edit_deck">Edit</string>
+    <string name="button_delete_deck">Delete</string>
+    <string name="button_create_deck">Create New Deck</string>
+
 </resources>
